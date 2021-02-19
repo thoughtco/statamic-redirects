@@ -21,12 +21,20 @@ class ServiceProvider extends AddonServiceProvider
         // after install we need to copy our global
         Statamic::afterInstalled(function ($command) {
 
-            if (File::exists(resource_path('blueprints/collections/redirects.yaml')))
+            if (File::exists(resource_path('blueprints/collections/redirects/redirects.yaml')))
                 return;
+
+            if (!File::exists(resource_path('blueprints/collections/redirects/')) {
+                File::makeDirectory(resource_path('blueprints/collections/redirects/'), 0777, true, true);
+            }
+
+            $original = __DIR__.'/../resources/blueprints/redirects.yaml';
+            $yaml = YAML::file($original)->parse();
+            File::put(resource_path('blueprints/collections/redirects/redirects.yaml'), YAML::dump($yaml));
 
             $original = __DIR__.'/../resources/collections/redirects.yaml';
             $yaml = YAML::file($original)->parse();
-            File::put(resource_path('blueprints/collections/redirects.yaml'), YAML::dump($yaml));
+            File::put(base_path('content/collections/redirects.yaml'), YAML::dump($yaml));
 
         });
 
