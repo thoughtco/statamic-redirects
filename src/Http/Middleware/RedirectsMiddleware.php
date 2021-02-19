@@ -1,6 +1,6 @@
 <?php
 
-namespace Thoughtco\Redirects\Middleware;
+namespace Thoughtco\Redirects\Http\Middleware;
 
 use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Statamic\Facades\Entry;
 use Statamic\Support\Str;
 
-class Redirects extends Middleware
+class RedirectsMiddleware extends Middleware
 {
     public function handle(Request $request, Closure $next)
     {

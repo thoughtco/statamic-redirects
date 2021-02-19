@@ -15,7 +15,7 @@ class ServiceProvider extends AddonServiceProvider
 
         // add our middleware
         Statamic::booted(function () {
-            app('router')->prependMiddlewareToGroup('statamic.web', \Thoughtco\Redirects\Http\Middleware\Redirects::class);
+            app('router')->prependMiddlewareToGroup('statamic.web', \Thoughtco\Redirects\Http\Middleware\RedirectsMiddleware::class);
         });
 
         // after install we need to copy our global
