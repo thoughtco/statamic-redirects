@@ -4,6 +4,8 @@ namespace Thoughtco\Redirects;
 
 use File;
 use Statamic;
+use Statamic\Facades\File;
+use Statamic\Facades\YAML;
 use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
