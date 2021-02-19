@@ -24,7 +24,7 @@ class ServiceProvider extends AddonServiceProvider
             if (File::exists(resource_path('blueprints/collections/redirects/redirects.yaml')))
                 return;
 
-            if (!File::exists(resource_path('blueprints/collections/redirects/')) {
+            if (!File::exists(resource_path('blueprints/collections/redirects/'))) {
                 File::makeDirectory(resource_path('blueprints/collections/redirects/'), 0777, true, true);
             }
 
