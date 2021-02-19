@@ -2,7 +2,6 @@
 
 namespace Thoughtco\Redirects;
 
-use File;
 use Statamic;
 use Statamic\Facades\File;
 use Statamic\Facades\YAML;
