@@ -4,13 +4,11 @@ namespace Thoughtco\Redirects\Http\Middleware;
 
 use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
-use Illuminate\Http\Request;
 use Statamic\Facades\Entry;
-use Statamic\Support\Str;
 
 class RedirectsMiddleware extends Middleware
 {
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next, ...$guards)
     {
         $url = $request->path();
 
