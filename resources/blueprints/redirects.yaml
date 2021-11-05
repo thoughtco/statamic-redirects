@@ -11,16 +11,16 @@ sections:
           validate:
             - required
       -
-        handle: slug
+        handle: from
         field:
-          type: slug
-          required: true
-          localizable: true
+          input_type: text
+          antlers: false
+          display: From
+          type: text
+          icon: text
+          listable: hidden
           validate:
             - required
-          display: From
-          listable: hidden
-          generate: true
       -
         handle: to
         field:

@@ -14,8 +14,16 @@ class RedirectsMiddleware extends Middleware
 
         $redirect = Entry::findByUri('/redirects/'.$url);
 
-        if (!$redirect)
-            return $next($request);
+        if (!$redirect) {
+
+            $redirect = Entry::whereCollection('redirects')
+                ->where('from', '/redirects/'.$url)
+                ->first();
+
+            if (!$redirect)
+                return $next($request);
+
+        }
 
         return redirect($redirect->to, $redirect->code ?? 302);
     }
