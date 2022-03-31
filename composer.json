@@ -24,5 +24,8 @@
                 "Thoughtco\\Redirects\\ServiceProvider"
             ]
         }
+    },
+    "require": {
+        "statamic/cms": "^3.3.1"
     }
 }
