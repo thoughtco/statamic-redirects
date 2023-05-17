@@ -20,6 +20,6 @@ class RedirectsMiddleware extends Middleware
         if (!$redirect)
             return $next($request);
 
-        return redirect($redirect->to, $redirect->code->value() ?? 302);
+        return redirect($redirect->to, $redirect->get('code') ?? 302);
     }
 }
