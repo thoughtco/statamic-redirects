@@ -2,21 +2,21 @@
 
 namespace Thoughtco\Redirects;
 
-use Statamic;
 use Statamic\Facades\File;
 use Statamic\Facades\YAML;
 use Statamic\Providers\AddonServiceProvider;
+use Statamic\Statamic;
 
 class ServiceProvider extends AddonServiceProvider
 {
-    public function boot()
-    {
-        parent::boot();
+    public $middlewareGroups = [
+        'statamic.web' => [
+            Http\Middleware\RedirectsMiddleware::class,
+        ],
+    ];
 
-        // add our middleware
-        Statamic::booted(function () {
-            app('router')->prependMiddlewareToGroup('statamic.web', \Thoughtco\Redirects\Http\Middleware\RedirectsMiddleware::class);
-        });
+    public function bootAddon()
+    {
 
         // after install we need to copy our global
         Statamic::afterInstalled(function ($command) {
