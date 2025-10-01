@@ -15,10 +15,12 @@ class RedirectsMiddleware extends Middleware
         $redirect = Entry::query()
             ->where('collection', 'redirects')
             ->where('title', $url)
+            ->where('published', true)
             ->first();
 
-        if (!$redirect)
+        if (! $redirect || ! $redirect->to) {
             return $next($request);
+        }
 
         return redirect($redirect->to, $redirect->get('code') ?? 302);
     }
